@@ -1,54 +1,61 @@
-# React + TypeScript + Vite
+# # Task: Recreate Pricing Cards in React (Tailwind + TypeScript)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**🎯 Goal:**
+Recreate the pricing cards UI (as seen in the provided image) into a reusable React component using TypeScript and TailwindCSS.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**📁 Component Name:**
+`PricingCard.tsx`
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**🧩 Props Definition:**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```ts
+interface PricingCardProps {
+  plan: string; // Name of the plan (e.g., "Standard")
+  price: string; // Price string (e.g., "$100")
+  features: string[]; // List of features (e.g., ["50,000 Requests", "4 contributors", "Up to 3 GB storage space"])
+  isFeatured?: boolean; // Optional flag to highlight a plan (e.g., "Pro" plan is highlighted)
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**📐 UI Requirements:**
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. **Layout:**
+
+   - Stack cards **horizontally** on desktop (≥ 640px) and **vertically** on mobile (< 640px).
+   - Center-aligned title "Pricing" above the cards.
+
+2. **Interactivity:**
+
+   - On desktop: add hover shadow effect (`hover:shadow-xl`).
+   - Allow full keyboard navigation with `focus:ring` styles (`focus:outline-none focus:ring-2 focus:ring-offset-2` etc.).
+
+3. **Styling:**
+
+   - Use **TailwindCSS only**. No inline styles.
+   - Use **bigger font and darker background** for the `isFeatured` plan.
+   - Ensure uniform spacing, rounded corners, and clean UI.
+   - Use Tailwind's `bg`, `text`, `p`, `m`, `rounded`, and `shadow` utilities as needed.
+
+4. **Responsiveness:**
+
+   - Ensure responsive padding, margin, and stacking behavior using `sm:`, `md:`, `lg:` prefixes.
+
+---
+
+**🧾 Expected Output:**
+Return **only** the `.tsx` file content wrapped in `tsx` code fences.
+
+---
+
+**📎 Attached Design Reference:**
+You've provided the image visually showing 3 plans:
+
+- **Standard (\$100)**
+- **Pro (\$200)** → featured
+- **Expert (\$500)**
