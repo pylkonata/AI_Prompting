@@ -10,6 +10,9 @@ node_modules/
 /build
 /dist
 
+# Parcel cache
+.parcel-cache/
+
 # Misc
 .DS_Store
 .env
@@ -27,4 +30,10 @@ yarn-error.log*
 .idea/
 .vscode/
 *.swp
-*.swo 
+*.swo
+
+# Package lock
+package-lock.json
+
+# Task 3 specific
+task_3/dist/
